@@ -1,2 +1,2 @@
-# Mini_ProjetSN1
+# RPG_Medieval
 RPG Médiéval
