@@ -1,8 +1,19 @@
 #include <QCoreApplication>
+#include "cgame.h"
+#include "cpersonnage.h"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    cgame game();
+    CPersonnage P1;
+    CPersonnage P2;
 
-    return a.exec();
+    P1.EstMage();
+    P2.EstMage();
+
+    game().LauchGame(&P1, &P2);
+
+
+
+
 }
