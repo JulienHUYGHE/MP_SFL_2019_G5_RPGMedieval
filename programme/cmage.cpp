@@ -16,6 +16,7 @@ CMage::CMage()
     m_estInvis = false;
     m_estMort = false;
     m_CDSort[0] = { 0 };
+    m_mana = -1;
 
 }
 
@@ -32,6 +33,7 @@ CMage::CMage(string nom, int maxpdv, int esquive, int vitesse, int atk, int def,
     m_estPoison = false;
     m_estInvis = false;
     m_CDSort[0] = { 0 };
+    m_mana = 10 * m_intel;
 }
 
 CMage::~CMage()
@@ -54,5 +56,22 @@ int CMage::Get_Mana()
 void CMage::Set_Mana(int valeur)
 {
     m_mana = valeur;
+
+}
+
+bool sort(CMage cible , CMage lanceur)
+{
+    if(lanceur.Get_Mana() >= 5) {
+        int pdvRestant =  cible.Get_Pdv() - 50;
+        cible.Set_Pdv(pdvRestant);
+        int manaRestant = lanceur.Get_Mana() - 5;
+        lanceur.Set_Mana(manaRestant);
+        cout << "L'attaque a bien fonctionné, le personnage"<< cible.Get_Nom()<< "a perdu 50 points de vie" <<endl;
+        return true;
+    }
+    else {
+        cout << "Vous n'avez pas assez de mana"<< endl;
+        return false;
+    }
 
 }

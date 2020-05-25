@@ -14,6 +14,7 @@ public:
     CMage();
     CMage(string nom, int maxpdv, int esquive, int vitesse, int atk, int def, int agi, int intel);
     ~CMage();
+    CMage(CMage * mage);
 
     void RegenMana(int valeur);
 
@@ -26,6 +27,9 @@ public:
 
     int Get_Mana();
     void Set_Mana(int valeur);
+
+
+    bool sort(CMage cible,CMage lanceur);
 };
 
 #endif // CMAGE_H
