@@ -4,14 +4,14 @@
 
 #endif // CGAME_H
 
-class cgame
+class CGame
 {
 private:
     int m_nbtour;
 
 public:
-    cgame();
-    ~cgame();
+    CGame();
+    ~CGame();
 
     /*****************************/
 

@@ -1,6 +1,16 @@
 #include "cpersonnage.h"
 
 
+string CPersonnage::get_Nom() const
+{
+    return m_nom;
+}
+
+void CPersonnage::setNom(const string & nom)
+{
+    m_nom = nom;
+}
+
 CPersonnage::CPersonnage()
 {
     m_nom = "Personnage non défini";
@@ -32,10 +42,9 @@ CPersonnage::CPersonnage(string nom, int maxpdv, int esquive, int vitesse, int a
     m_CDSort[0] = { 0 };
 }
 
-
-string CPersonnage::Get_Nom() const
+CPersonnage::~CPersonnage()
 {
-    return m_nom;
+
 }
 
 int CPersonnage::Get_Pdv() const

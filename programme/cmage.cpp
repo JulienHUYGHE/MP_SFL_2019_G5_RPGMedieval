@@ -66,7 +66,7 @@ bool sort(CMage cible , CMage lanceur)
         cible.Set_Pdv(pdvRestant);
         int manaRestant = lanceur.Get_Mana() - 5;
         lanceur.Set_Mana(manaRestant);
-        cout << "L'attaque a bien fonctionné, le personnage"<< cible.Get_Nom()<< "a perdu 50 points de vie" <<endl;
+        cout << "L'attaque a bien fonctionné, le personnage"<< cible.get_Nom()<< "a perdu 50 points de vie" <<endl;
         return true;
     }
     else {

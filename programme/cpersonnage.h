@@ -40,10 +40,7 @@ public:
     bool estInvis() { return m_estInvis; };
     bool estDead()  { return m_estMort;  };
 
-
-
-
-    string Get_Nom() const;
+    string get_Nom() const;
     int Get_Pdv() const;
     int Get_Maxpdv()const;
     int Get_Esquive()const;
@@ -65,6 +62,7 @@ public:
     void Set_Intel(int valeur);
     void Set_Poison(bool valeur);
     void Set_Mort();
+    void setNom(const string & nom);
 };
 
 #endif // CPERSONNAGE_H

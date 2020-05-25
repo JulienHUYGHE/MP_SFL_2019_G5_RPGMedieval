@@ -7,26 +7,26 @@
 using namespace std;
 
 
-cgame::cgame()
+CGame::CGame()
 {
     m_nbtour = 0;
 }
 
 
 
-cgame::~cgame()
+CGame::~CGame()
 {
 
 }
 
-void cgame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
+void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
 {
     cout<<"Le combat va commencer"<<endl;
-    cout<<personnage1<<"va affrotner "<<personnage2<<"dans ce combat"<<endl;
+    cout << personnage1->get_Nom() << " va affronter " << personnage2->get_Nom() <<" dans ce combat"<<endl;
 }
 
 
-void cgame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
+void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
 {
     m_nbtour = 1;
     int J1 = 2;
@@ -94,17 +94,17 @@ void cgame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
 
 
 
-bool cgame::IsGameOver(CPersonnage * personnage1, CPersonnage * personnage2)
+bool CGame::IsGameOver(CPersonnage * personnage1, CPersonnage * personnage2)
 {
     if(personnage1->estDead())
     {
-        cout<<"le joueur 2 ("<<personnage2->Get_Nom()<<")  est le vainqueur"<<endl;
+        cout<<"le joueur 2 ("<<personnage2->get_Nom()<<")  est le vainqueur"<<endl;
     }else{
-        cout<<"le joueur 1 ("<<personnage1->Get_Nom()<<")  est le vainqueur"<<endl;
+        cout<<"le joueur 1 ("<<personnage1->get_Nom()<<")  est le vainqueur"<<endl;
     }
 }
 
-bool cgame::QuelJoueur(int nombreTour)
+bool CGame::QuelJoueur(int nombreTour)
 {
     if(nombreTour%2 == 0)
     {
