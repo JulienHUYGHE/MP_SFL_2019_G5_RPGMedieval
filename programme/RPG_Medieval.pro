@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         Cguerrier.cpp \
         carcher.cpp \
+        ccombat.cpp \
         cgame.cpp \
         cmage.cpp \
         cpersonnage.cpp \
@@ -29,6 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    CCombat.h \
     carcher.h \
     cgame.h \
     cguerrier.h \
