@@ -4,11 +4,11 @@ using namespace std;
 
 CMage::CMage()
 {
-    m_nom = "Mage non défini";
-    m_pdv = m_maxpdv = -1;
+    m_nom = "Mage";
+    m_pdv = m_maxpdv = 100;
     m_esquive = -1;
     m_vitesse = -1;
-    m_atk = -1;
+    m_atk = 50;
     m_def = -1;
     m_agi = -1;
     m_intel = -1;

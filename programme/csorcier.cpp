@@ -2,11 +2,11 @@
 
 CSorcier::CSorcier()
 {
-    m_nom = "Sorcier non défini";
-    m_pdv = m_maxpdv = -1;
+    m_nom = "Sorcier";
+    m_pdv = m_maxpdv = 100;
     m_esquive = -1;
     m_vitesse = -1;
-    m_atk = -1;
+    m_atk = 40;
     m_def = -1;
     m_agi = -1;
     m_intel = -1;

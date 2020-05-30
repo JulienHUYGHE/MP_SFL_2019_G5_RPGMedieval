@@ -20,4 +20,5 @@ public:
     bool IsGameOver(CPersonnage * personnage1, CPersonnage * personnage2);
     void LauchGame(CPersonnage * personnage1, CPersonnage * personnage2);
     bool QuelJoueur(int nombreTour);
+    void ChoisirPersonnage(CPersonnage * personnage1, CPersonnage * personnage2);
 };

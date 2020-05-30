@@ -37,3 +37,6 @@ HEADERS += \
     cmage.h \
     cpersonnage.h \
     csorcier.h
+
+RESOURCES += \
+    Persos.qrc

@@ -2,11 +2,11 @@
 
 CGuerrier::CGuerrier()
 {
-    m_nom = "Guerrier non defini";
-    m_pdv = m_maxpdv = -1;
+    m_nom = "Guerrier";
+    m_pdv = m_maxpdv = 200;
     m_esquive = -1;
     m_vitesse = -1;
-    m_atk = -1;
+    m_atk = 75;
     m_def = -1;
     m_agi = -1;
     m_intel = -1;

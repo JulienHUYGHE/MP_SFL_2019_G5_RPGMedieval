@@ -2,11 +2,11 @@
 
 CArcher::CArcher()
 {
-    m_nom = "Archer non défini";
-    m_pdv = m_maxpdv = -1;
+    m_nom = "Archer";
+    m_pdv = m_maxpdv = 90;
     m_esquive = -1;
     m_vitesse = -1;
-    m_atk = -1;
+    m_atk = 25;
     m_def = -1;
     m_agi = -1;
     m_intel = -1;
