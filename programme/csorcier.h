@@ -2,7 +2,7 @@
 #define CSORCIER_H
 
 #include "cpersonnage.h"
-class CSorcier : CPersonnage
+class CSorcier : public CPersonnage
 {
 private:
     int m_NbInvis;

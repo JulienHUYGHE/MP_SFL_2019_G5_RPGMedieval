@@ -3,7 +3,7 @@
 #include "cpersonnage.h"
 #include <string>
 
-class CGuerrier : CPersonnage
+class CGuerrier : public CPersonnage
 {
 private:
     int m_parade;

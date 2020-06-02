@@ -2,9 +2,9 @@
 #include "cgame.h"
 #include "cpersonnage.h"
 #include "CArcher.h"
-#include "CMage.h"
-#include "CSorcier.h"
-#include "CGuerrier.h"
+#include "cmage.h"
+#include "csorcier.h"
+#include "cguerrier.h"
 
 int main(int argc, char *argv[])
 {

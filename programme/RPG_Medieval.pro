@@ -31,7 +31,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     CCombat.h \
-    carcher.h \
+    CArcher.h \
     cgame.h \
     cguerrier.h \
     cmage.h \

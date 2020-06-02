@@ -4,7 +4,7 @@
 
 
 
-class CArcher : CPersonnage
+class CArcher : public CPersonnage
 {
 private :
     bool Vise;   //Augmente les dégats quand c'est true
