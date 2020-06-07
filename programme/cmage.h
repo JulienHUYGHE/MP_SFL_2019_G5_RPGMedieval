@@ -13,8 +13,10 @@ private:
 public:
     CMage();
     CMage(string nom, int maxpdv, int esquive, int vitesse, int atk, int def, int agi, int intel);
+    CMage(CPersonnage * personnage1);
     ~CMage();
     CMage(CMage * mage);
+
 
     void RegenMana(int valeur);
 
@@ -29,7 +31,7 @@ public:
     void Set_Mana(int valeur);
 
 
-    bool sort(CMage cible,CMage lanceur);
+    bool sort(CPersonnage cible,CPersonnage lanceur);
 };
 
 #endif // CMAGE_H

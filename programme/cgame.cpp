@@ -2,6 +2,7 @@
 #include "cpersonnage.h"
 #include <cstdlib>
 #include <algorithm>
+#include "cmage.h"
 
 
 using namespace std;
@@ -25,6 +26,24 @@ void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
     cout << personnage1->get_Nom() << " va affronter " << personnage2->get_Nom() <<" dans ce combat"<<endl;
 }
 
+void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 )
+{
+    CMage  mage1(personnage1);
+    CMage mage2(personnage2);
+
+
+        if(joueur == 1) {
+            if(mage1.sort(personnage2,personnage1) == false) {
+                PlayTurn(personnage1,personnage2);
+            }
+        }
+        else {
+            if(mage2.sort(personnage1,personnage2) == false) {
+               PlayTurn(personnage1,personnage2);
+           }
+        }
+}
+
 
 void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
 {
@@ -39,7 +58,8 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
             do{
                 cout<<"tour du joueur 1"<<endl;
                 cout<<"tapez 1 pour attaquer"<<endl;
-                cout<<"tapez 2 pour passer votre tour\n"<<endl;
+                cout<<"tapez 2 pour lancer un sort\n"<<endl;
+                cout<<"tapez 3 pour passer votre tour"<<endl;
                 cin>>Choix;
             }while(Choix < 1 || Choix > 2);
 
@@ -72,7 +92,8 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
             do{
                 cout<<"tour du joueur 2"<<endl;
                 cout<<"tapez 1 pour attaquer"<<endl;
-                cout<<"tapez 2 pour passer votre tour"<<endl;
+                cout<<"tapez 2 pour lancer un sort"<<endl;
+                cout<<"tapez 3 pour passer votre tour"<<endl;
                 cin>>Choix;
             }while(Choix < 1 || Choix > 2);
 
@@ -96,6 +117,9 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
                     cout<<"le joueur 1 ("<<personnage2->get_Nom()<<")  est le vainqueur"<<endl;
                 }
             } else {
+                if(Choix == 2) {
+
+                }
                 cout<<"tour "<<m_nbtour<<"termine"<<endl;
                 m_nbtour++;
                 J1 = J1 - 1;

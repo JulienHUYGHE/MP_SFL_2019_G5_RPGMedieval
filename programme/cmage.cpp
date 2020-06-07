@@ -35,6 +35,24 @@ CMage::CMage(string nom, int maxpdv, int esquive, int vitesse, int atk, int def,
     m_CDSort[0] = { 0 };
     m_mana = 10 * m_intel;
 }
+CMage::CMage(CPersonnage * personnage1)
+{
+  m_nom = personnage1->get_Nom();
+  m_pdv = personnage1->Get_Maxpdv();
+  m_maxpdv= personnage1->Get_Maxpdv();
+  m_esquive = personnage1->Get_Esquive();
+  m_vitesse = personnage1->Get_Vitesse();
+  m_atk = personnage1->Get_Atk();
+  m_def = personnage1->Get_Def();
+  m_agi = personnage1->Get_Agi();
+  m_intel = personnage1->Get_Intel();
+  m_estPoison = personnage1->Get_Poison();
+  m_estInvis = false;
+  m_CDSort[0] = { 0 };
+  m_mana = 10 * m_intel;
+}
+
+
 
 CMage::~CMage()
 {
@@ -59,14 +77,17 @@ void CMage::Set_Mana(int valeur)
 
 }
 
-bool sort(CMage cible , CMage lanceur)
+bool sort(CPersonnage * cible , CPersonnage * lanceur)
 {
-    if(lanceur.Get_Mana() >= 5) {
-        int pdvRestant =  cible.Get_Pdv() - 50;
-        cible.Set_Pdv(pdvRestant);
-        int manaRestant = lanceur.Get_Mana() - 5;
-        lanceur.Set_Mana(manaRestant);
-        cout << "L'attaque a bien fonctionné, le personnage"<< cible.get_Nom()<< "a perdu 50 points de vie" <<endl;
+    CMage mageCible(cible);
+    CMage mageLanceur(lanceur);
+
+    if(mageLanceur.Get_Mana() >= 5) {
+        int pdvRestant =  mageCible.Get_Pdv() - 50;
+        mageCible.Set_Pdv(pdvRestant);
+        int manaRestant = mageLanceur.Get_Mana() - 5;
+        mageLanceur.Set_Mana(manaRestant);
+        cout << "L'attaque a bien fonctionné, le personnage"<< mageCible.get_Nom()<< "a perdu 50 points de vie" <<endl;
         return true;
     }
     else {

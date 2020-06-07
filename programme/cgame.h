@@ -21,4 +21,5 @@ public:
     void LauchGame(CPersonnage * personnage1, CPersonnage * personnage2);
     bool QuelJoueur(int nombreTour);
     void ChoisirPersonnage(CPersonnage * personnage1, CPersonnage * personnage2);
+    void Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 );
 };

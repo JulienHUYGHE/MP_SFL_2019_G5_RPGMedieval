@@ -18,28 +18,28 @@
 
 
 
-//void CCombat::Attaque(int joueur)
-//{
-//    int choix;
-//    cout<<"Veuillez choisir une action"<<endl<<"[1] Sort"<<endl<<"[2] Attaque normale"<<endl;
-//    cin >> choix;
-//    switch(choix) {
-//    case 1 : //Sort
-//        if(joueur == 1) {
-//            while(m_personnage1->sort(m_personnage2,m_personnage1) == false) {
-//                Attaque(joueur);
-//            }
-//        }
-//        else {
-//            while(m_personnage2->sort(m_personnage1,m_personnage2) == false) {
-//                Attaque(joueur);
-//            }
-//        }
-//    }
+/*void CCombat::Attaque(int joueur)
+{
+    int choix;
+    cout<<"Veuillez choisir une action"<<endl<<"[1] Sort"<<endl<<"[2] Attaque normale"<<endl;
+    cin >> choix;
+   switch(choix) {
+   case 1 : //Sort
+        if(joueur == 1) {
+            while(m_personnage1->sort(m_personnage2,m_personnage1) == false) {
+                Attaque(joueur);
+            }
+        }
+        else {
+            while(m_personnage2->sort(m_personnage1,m_personnage2) == false) {
+               Attaque(joueur);
+           }
+        }
+   }
 
-//    //case 2: //Attaque normale
+    //case 2: //Attaque normale
 
-//}
+}*/
 
 
 

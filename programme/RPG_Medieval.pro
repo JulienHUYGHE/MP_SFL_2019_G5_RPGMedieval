@@ -15,6 +15,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        arme\CBow.cpp\
+        arme\CMelee.cpp\
+        arme\CStaff.cpp\
+        arme\CSword.cpp\
+        arme\CWeapon.cpp\
+        arme\CRanged.cpp\
+        arme\CDagger.cpp\
         Cguerrier.cpp \
         carcher.cpp \
         ccombat.cpp \
@@ -30,6 +37,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    arme\CBow.h\
+    arme\CMelee.h\
+    arme\CStaff.h\
+    arme\CSword.h\
+    arme\CWeapon.h\
+    arme\CRanged.h\
+    arme\CDagger.h\
     CCombat.h \
     CArcher.h \
     cgame.h \
