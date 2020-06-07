@@ -1,7 +1,7 @@
 #ifndef RANGED_H
 #define RANGED_H
 
-#include "CCharacters.h"
+#include "cpersonnage.h"
 #include "CWeapon.h"
 
 class CCharacter;

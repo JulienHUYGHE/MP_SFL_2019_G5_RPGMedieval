@@ -26,7 +26,7 @@ void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
     cout << personnage1->get_Nom() << " va affronter " << personnage2->get_Nom() <<" dans ce combat"<<endl;
 }
 
-void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 )
+/*void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 )
 {
     CMage  mage1(personnage1);
     CMage mage2(personnage2);
@@ -42,7 +42,7 @@ void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2
                PlayTurn(personnage1,personnage2);
            }
         }
-}
+}*/
 
 
 void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
