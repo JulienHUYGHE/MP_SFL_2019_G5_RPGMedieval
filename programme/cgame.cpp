@@ -66,6 +66,7 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
             if(Choix == 1)
             {
                 attaquer(personnage1, personnage2);
+                IsGameOver(personnage1, personnage2);
                 J1 = J1 - 1;
                 J2 = J2 + 1;
             } else
@@ -87,9 +88,9 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
             if(Choix == 1)
             {
                 attaquer(personnage2, personnage1);
+                IsGameOver(personnage1, personnage2);
                 J1 = J1 + 1;
                 J2 = J2 - 1;
-
             } else
             {
                 cout<<"tour "<<m_nbtour<<" termine \n\n"<<endl;
@@ -98,7 +99,7 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
                 J2 = J2 - 1;
             }
         }
-    }while(personnage1->estDead() == false || personnage2->estDead() ==false);
+    }while(IsGameOver(personnage1, personnage2) == false);
 }
 bool CGame::QuelJoueur(int nombreTour)
 {
@@ -126,6 +127,19 @@ bool CGame::Esquive(CPersonnage * Attaquant, CPersonnage * receveur)
 
 }
 
+bool CGame::IsGameOver(CPersonnage *personnage1, CPersonnage *personnage2)
+{
+    if(personnage1->Get_Pdv() <= 0)
+    {
+        cout<<"le joueur 2 ("<<personnage2->get_Nom()<<")  est le vainqueur"<<endl;
+        return true;
+    }else if(personnage2->Get_Pdv() <= 0)
+    {
+        cout<<"le joueur 1 ("<<personnage1->get_Nom()<<")  est le vainqueur"<<endl;
+        return true;
+    }
+    return false;
+}
 void CGame::attaquer(CPersonnage * Attaquant, CPersonnage * receveur)
 {
     int ATK = Attaquant->Get_Atk();
@@ -144,13 +158,9 @@ void CGame::attaquer(CPersonnage * Attaquant, CPersonnage * receveur)
     cout<<"les points de vie de votre advetrsaire sont de : "<<receveur->Get_Pdv()<<endl;
     cout<<"tour "<<m_nbtour<<" termine\n\n"<<endl;
     m_nbtour++;
-    if(Attaquant->Get_Pdv() <= 0)
-    {
-        cout<<"le joueur 2 ("<<receveur->get_Nom()<<")  est le vainqueur"<<endl;
-    }else if(receveur->Get_Pdv() <= 0){
 
-        cout<<"le joueur 1 ("<<Attaquant->get_Nom()<<")  est le vainqueur"<<endl;
-    }
+
+
 }
 
 void CGame::afficherChoixActions(CPersonnage * Attaquant, CPersonnage * receveur)
