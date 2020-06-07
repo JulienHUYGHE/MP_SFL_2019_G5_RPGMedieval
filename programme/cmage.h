@@ -31,7 +31,7 @@ public:
     void Set_Mana(int valeur);
 
 
-    bool sort(CPersonnage cible,CPersonnage lanceur);
+    bool sort(CPersonnage * cible,CPersonnage * lanceur);
 };
 
 #endif // CMAGE_H

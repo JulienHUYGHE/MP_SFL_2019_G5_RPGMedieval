@@ -24,7 +24,7 @@ CMage::CMage(string nom, int maxpdv, int esquive, int vitesse, int atk, int def,
 {
     m_nom = nom;
     m_pdv = m_maxpdv = maxpdv;
-    m_esquive = esquive;
+    m_esquive = 20;
     m_vitesse = vitesse;
     m_atk = atk;
     m_def = def;
@@ -77,7 +77,7 @@ void CMage::Set_Mana(int valeur)
 
 }
 
-bool sort(CPersonnage * cible , CPersonnage * lanceur)
+bool CMage::sort(CPersonnage * cible , CPersonnage * lanceur)
 {
     CMage mageCible(cible);
     CMage mageLanceur(lanceur);

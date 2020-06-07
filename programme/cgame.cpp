@@ -1,7 +1,10 @@
+
 #include "cgame.h"
 #include "cpersonnage.h"
 #include <cstdlib>
 #include <algorithm>
+#include <ctime>
+#include <cstdlib>
 #include "cmage.h"
 
 
@@ -12,24 +15,16 @@ CGame::CGame()
 {
     m_nbtour = 0;
 }
-
-
-
 CGame::~CGame()
 {
 
 }
 
-void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
-{
-    cout<<"Le combat va commencer"<<endl;
-    cout << personnage1->get_Nom() << " va affronter " << personnage2->get_Nom() <<" dans ce combat"<<endl;
-}
 
-/*void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 )
+void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 )
 {
     CMage  mage1(personnage1);
-    CMage mage2(personnage2);
+    CMage  mage2(personnage2);
 
 
         if(joueur == 1) {
@@ -42,9 +37,14 @@ void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
                PlayTurn(personnage1,personnage2);
            }
         }
-}*/
+}
 
 
+void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
+{
+    cout<<"Le combat va commencer"<<endl;
+    cout << personnage1->get_Nom() << " va affronter " << personnage2->get_Nom() <<" dans ce combat \n\n\n"<<endl;
+}
 void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
 {
     m_nbtour = 1;
@@ -56,88 +56,50 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
         if(J1 > J2)
         {
             do{
-                cout<<"tour du joueur 1"<<endl;
-                cout<<"tapez 1 pour attaquer"<<endl;
-                cout<<"tapez 2 pour lancer un sort\n"<<endl;
-                cout<<"tapez 3 pour passer votre tour"<<endl;
+                cout<<"***************************************"<<endl;
+                cout<<"         tour du joueur 1"<<endl;
+                cout<<"***************************************\n"<<endl;
+                afficherChoixActions(personnage1, personnage2);
                 cin>>Choix;
             }while(Choix < 1 || Choix > 2);
 
             if(Choix == 1)
             {
-                int ATK = personnage1->Get_Atk();
-                int PVop = personnage2->Get_Pdv() - ATK; //op pour opponent
-                personnage2->Set_Pdv(PVop);
-                cout<<"vous infliges "<<ATK<<" de degats"<<endl;
-                cout<<"les points de vie de votre advetrsaire sont de : "<<PVop<<endl;
-                cout<<"tour "<<m_nbtour<<" termine"<<endl;
-                m_nbtour++;
+                attaquer(personnage1, personnage2);
                 J1 = J1 - 1;
                 J2 = J2 + 1;
-                if(personnage1->Get_Pdv() <= 0)
-                {
-                    cout<<"le joueur 2 ("<<personnage2->get_Nom()<<")  est le vainqueur"<<endl;
-                    break;
-                }else if(personnage2->Get_Pdv() <= 0){
-
-                    cout<<"le joueur 1 ("<<personnage2->get_Nom()<<")  est le vainqueur"<<endl;
-                }
-            } else {
-                cout<<"tour "<<m_nbtour<<"termine"<<endl;
+            } else
+            {
+                cout<<"tour "<<m_nbtour<<" termine\n\n"<<endl;
                 m_nbtour++;
                 J1 = J1 - 1;
                 J2 = J2 + 1;
             }
         } else {
             do{
-                cout<<"tour du joueur 2"<<endl;
-                cout<<"tapez 1 pour attaquer"<<endl;
-                cout<<"tapez 2 pour lancer un sort"<<endl;
-                cout<<"tapez 3 pour passer votre tour"<<endl;
+                cout<<"***************************************"<<endl;
+                cout<<"         tour du joueur 2"<<endl;
+                cout<<"***************************************\n"<<endl;
+                afficherChoixActions(personnage2, personnage1);
                 cin>>Choix;
             }while(Choix < 1 || Choix > 2);
 
             if(Choix == 1)
             {
-                int ATK = personnage2->Get_Atk();
-                int PVop = personnage1->Get_Pdv() - ATK; //op pour opponent
-                personnage1->Set_Pdv(PVop);
-                cout<<"vous infliges "<<ATK<<"de degats"<<endl;
-                cout<<"les points de vie de votre advetrsaire sont de : "<<PVop<<endl;
-                cout<<"tour "<<m_nbtour<<"termine"<<endl;
-                m_nbtour++;
-                J1 = J1 - 1;
-                J2 = J2 + 1;
-                if(personnage1->Get_Pdv() <= 0)
-                {
-                    cout<<"le joueur 2 ("<<personnage2->get_Nom()<<")  est le vainqueur"<<endl;
-                    break;
-                }else if(personnage2->Get_Pdv() <= 0){
+                attaquer(personnage2, personnage1);
+                J1 = J1 + 1;
+                J2 = J2 - 1;
 
-                    cout<<"le joueur 1 ("<<personnage2->get_Nom()<<")  est le vainqueur"<<endl;
-                }
-            } else {
-                if(Choix == 2) {
-
-                }
-                cout<<"tour "<<m_nbtour<<"termine"<<endl;
+            } else
+            {
+                cout<<"tour "<<m_nbtour<<" termine \n\n"<<endl;
                 m_nbtour++;
-                J1 = J1 - 1;
-                J2 = J2 + 1;
+                J1 = J1 + 1;
+                J2 = J2 - 1;
             }
         }
-
-
     }while(personnage1->estDead() == false || personnage2->estDead() ==false);
-
-
-
 }
-
-
-
-
-
 bool CGame::QuelJoueur(int nombreTour)
 {
     if(nombreTour%2 == 0)
@@ -148,6 +110,57 @@ bool CGame::QuelJoueur(int nombreTour)
     }
 
 }
+bool CGame::Esquive(CPersonnage * Attaquant, CPersonnage * receveur)
+{
+    int max, random_number;
+    max = 100;
+
+    srand(time(0));
+    random_number = (rand () % max) +1;
+    int chanceEsquive = random_number;
+
+    if(chanceEsquive <= receveur->Get_Esquive())
+    {
+        return true;
+    }
+
+}
+
+void CGame::attaquer(CPersonnage * Attaquant, CPersonnage * receveur)
+{
+    int ATK = Attaquant->Get_Atk();
+    int PVop;
+
+    if(Esquive(Attaquant, receveur) == true)
+    {
+        cout<<"votre adverssaire a esquive l'attaque"<<endl;
+
+    } else
+    {
+        PVop = receveur->Get_Pdv() - ATK; //op pour opponent
+        receveur->Set_Pdv(PVop);
+    }
+
+    cout<<"les points de vie de votre advetrsaire sont de : "<<receveur->Get_Pdv()<<endl;
+    cout<<"tour "<<m_nbtour<<" termine\n\n"<<endl;
+    m_nbtour++;
+    if(Attaquant->Get_Pdv() <= 0)
+    {
+        cout<<"le joueur 2 ("<<receveur->get_Nom()<<")  est le vainqueur"<<endl;
+    }else if(receveur->Get_Pdv() <= 0){
+
+        cout<<"le joueur 1 ("<<Attaquant->get_Nom()<<")  est le vainqueur"<<endl;
+    }
+}
+
+void CGame::afficherChoixActions(CPersonnage * Attaquant, CPersonnage * receveur)
+{
+    cout<<"Vos Stats  ->  Type : "<<Attaquant->get_Nom()<<" | Attaque : "<<Attaquant->Get_Atk()<<" | PdV : "<< Attaquant->Get_Pdv()<<endl;
+    cout<<"Stats  Ennemi ->  Type : "<<receveur->get_Nom()<<" | Attaque : "<<receveur->Get_Atk()<<" | PdV : "<< receveur->Get_Pdv()<<endl;
+    cout<<"    - tapez 1 pour attaquer"<<endl;
+    cout<<"    - tapez 2 pour passer votre tour\n"<<endl;
+}
+
 
 void CGame::ChoisirPersonnage(CPersonnage * personnage1, CPersonnage * personnage2)
 {
@@ -220,6 +233,15 @@ void CGame::ChoisirPersonnage(CPersonnage * personnage1, CPersonnage * personnag
         break;
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 

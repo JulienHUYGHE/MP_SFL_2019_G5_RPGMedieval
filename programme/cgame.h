@@ -22,4 +22,7 @@ public:
     bool QuelJoueur(int nombreTour);
     void ChoisirPersonnage(CPersonnage * personnage1, CPersonnage * personnage2);
     void Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 );
+    void attaquer(CPersonnage * Attaquant,CPersonnage * receveur);
+    void afficherChoixActions(CPersonnage * Attaquant, CPersonnage * receveur);
+    bool Esquive(CPersonnage * Attaquant, CPersonnage * receveur);
 };
