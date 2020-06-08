@@ -16,7 +16,7 @@ public:
 
     /*****************************/
 
-    bool IsAbleToFire(CCharacter* p_character);
+    bool IsAbleToFire(CPersonnage* p_character);
     bool IsAbleToFire();
     int Get_NbAmmo(CMage p_character);
     

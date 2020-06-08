@@ -9,7 +9,7 @@ CRanged::CRanged(std::string p_name, int p_damage, short p_crit)
     m_crit = p_crit;
 }
 
-int CRanged::Get_NbAmmo(CCharacter p_character)
+int CRanged::Get_NbAmmo(CPersonnage p_character)
 {
     return -1;
 }

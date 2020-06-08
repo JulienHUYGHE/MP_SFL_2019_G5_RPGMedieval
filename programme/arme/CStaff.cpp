@@ -10,7 +10,7 @@ CStaff::CStaff(std::string p_name, int p_damage, float p_crit, std::string p_typ
     m_cost = p_cost;
 }
 
-bool CStaff::IsAbleToFire(CCharacter* p_character)
+bool CStaff::IsAbleToFire(CPersonnage* p_character)
 {
     if (p_character->Get_Mana() > m_cost)
         return true;
