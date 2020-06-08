@@ -52,7 +52,7 @@ void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2
 void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
 {
     cout<<"Le combat va commencer"<<endl;
-   ChoisirPersonnage(personnage1, personnage2);
+
     cout << personnage1->get_Nom() << " va affronter " << personnage2->get_Nom() <<" dans ce combat \n\n\n"<<endl;
 }
 void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
