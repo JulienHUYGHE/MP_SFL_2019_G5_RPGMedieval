@@ -11,6 +11,7 @@ private:
 public:
     CGuerrier();
     CGuerrier(string nom, int maxpdv, int esquive, int vitesse, int atk, int def, int agi, int intel);
+    CGuerrier(CPersonnage * personnage1);
     ~CGuerrier();
 
 

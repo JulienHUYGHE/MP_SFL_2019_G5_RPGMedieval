@@ -30,6 +30,23 @@ CSorcier::CSorcier(string nom, int maxpdv, int esquive, int vitesse, int atk, in
     m_estInvis = false;
     m_CDSort[0] = { 0 };
 }
+CSorcier::CSorcier(CPersonnage * personnage1)
+{
+  m_nom = personnage1->get_Nom();
+  m_pdv = personnage1->Get_Maxpdv();
+  m_maxpdv= personnage1->Get_Maxpdv();
+  m_esquive = personnage1->Get_Esquive();
+  m_vitesse = personnage1->Get_Vitesse();
+  m_atk = personnage1->Get_Atk();
+  m_def = personnage1->Get_Def();
+  m_agi = personnage1->Get_Agi();
+  m_intel = personnage1->Get_Intel();
+  m_estPoison = personnage1->Get_Poison();
+  m_estInvis = false;
+  m_CDSort[0] = { 0 };
+}
+
+
 
 CSorcier::~CSorcier()
 {

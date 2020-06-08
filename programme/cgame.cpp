@@ -6,6 +6,9 @@
 #include <ctime>
 #include <cstdlib>
 #include "cmage.h"
+#include "CArcher.h"
+#include "cguerrier.h"
+#include "csorcier.h"
 
 
 using namespace std;
@@ -33,16 +36,23 @@ void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2
             }
         }
         else {
-            if(mage2.sort(personnage1,personnage2) == false) {
-               PlayTurn(personnage1,personnage2);
+            if(joueur == 2) {
+                if(mage2.sort(personnage1,personnage2) == false) {
+                   PlayTurn(personnage1,personnage2);
+            }
+
            }
         }
 }
 
 
+
+
+
 void CGame::LauchGame(CPersonnage * personnage1, CPersonnage * personnage2)
 {
     cout<<"Le combat va commencer"<<endl;
+   ChoisirPersonnage(personnage1, personnage2);
     cout << personnage1->get_Nom() << " va affronter " << personnage2->get_Nom() <<" dans ce combat \n\n\n"<<endl;
 }
 void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
@@ -61,7 +71,7 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
                 cout<<"***************************************\n"<<endl;
                 afficherChoixActions(personnage1, personnage2);
                 cin>>Choix;
-            }while(Choix < 1 || Choix > 2);
+            }while(Choix < 1 || Choix > 3);
 
             if(Choix == 1)
             {
@@ -69,7 +79,14 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
                 IsGameOver(personnage1, personnage2);
                 J1 = J1 - 1;
                 J2 = J2 + 1;
-            } else
+            } else {
+                if(Choix == 3) {
+                    Sort(1,personnage1,personnage2 );
+                    IsGameOver(personnage1, personnage2);
+                    J1 = J1 - 1;
+                    J2 = J2 + 1;
+                }
+            }
             {
                 cout<<"tour "<<m_nbtour<<" termine\n\n"<<endl;
                 m_nbtour++;
@@ -83,7 +100,7 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
                 cout<<"***************************************\n"<<endl;
                 afficherChoixActions(personnage2, personnage1);
                 cin>>Choix;
-            }while(Choix < 1 || Choix > 2);
+            }while(Choix < 1 || Choix > 3);
 
             if(Choix == 1)
             {
@@ -91,7 +108,14 @@ void CGame::PlayTurn(CPersonnage * personnage1, CPersonnage * personnage2)
                 IsGameOver(personnage1, personnage2);
                 J1 = J1 + 1;
                 J2 = J2 - 1;
-            } else
+            } else {
+                if(Choix == 3) {
+                    Sort(2,personnage1,personnage2 );
+                    IsGameOver(personnage1, personnage2);
+                    J1 = J1 + 1;
+                    J2 = J2 - 1;
+                }
+            }
             {
                 cout<<"tour "<<m_nbtour<<" termine \n\n"<<endl;
                 m_nbtour++;
@@ -168,7 +192,11 @@ void CGame::afficherChoixActions(CPersonnage * Attaquant, CPersonnage * receveur
     cout<<"Vos Stats  ->  Type : "<<Attaquant->get_Nom()<<" | Attaque : "<<Attaquant->Get_Atk()<<" | PdV : "<< Attaquant->Get_Pdv()<<endl;
     cout<<"Stats  Ennemi ->  Type : "<<receveur->get_Nom()<<" | Attaque : "<<receveur->Get_Atk()<<" | PdV : "<< receveur->Get_Pdv()<<endl;
     cout<<"    - tapez 1 pour attaquer"<<endl;
-    cout<<"    - tapez 2 pour passer votre tour\n"<<endl;
+    cout<<"    - tapez 2 pour passer votre tour\n";
+    if(Attaquant->get_Nom() == "Mage") {
+        cout<<"    - tapez 3 pour lancer un sort\n"<<endl;
+    }
+
 }
 
 
@@ -197,16 +225,16 @@ void CGame::ChoisirPersonnage(CPersonnage * personnage1, CPersonnage * personnag
 
     switch (choix1){
     case 1:
-        personnage1->setNom("Mage");
+       personnage1->setNom("Mage");
         break;
     case 2:
-        personnage1->setNom("Sorcier");
+       personnage1->setNom("Sorcier");
         break;
     case 3:
         personnage1->setNom("Archer");
         break;
     case 4:
-        personnage1->setNom("Guerrier");
+       personnage1->setNom("Guerrier");
         break;
     }
 

@@ -12,6 +12,7 @@ private :
 public:
     CArcher();
     CArcher(string nom, int maxpdv, int esquive, int vitesse, int atk, int def, int agi, int intel);
+    CArcher(CPersonnage * personnage1);
     ~CArcher();
 
 

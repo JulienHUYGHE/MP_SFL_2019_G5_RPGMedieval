@@ -10,6 +10,7 @@ private:
 public:
     CSorcier();
     CSorcier(string nom, int maxpdv, int esquive, int vitesse, int atk, int def, int agi, int intel);
+    CSorcier(CPersonnage * personnage1);
     ~CSorcier();
 
     void Set_Invis(int nbtour);
