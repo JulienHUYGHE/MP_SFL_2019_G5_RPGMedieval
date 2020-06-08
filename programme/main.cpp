@@ -11,14 +11,59 @@ int main(int argc, char *argv[])
     CGame game;
 
 
-    CMage Player1;
-    CMage Player2;
+    CPersonnage p1;
+    CPersonnage p2;
+
+    game.ChoisirPersonnage(&p1, &p2);
+
+    if(p1.get_Nom() == "Mage")
+    {
+        CMage Player1;
+        p1 = Player1;
+    }
+    if(p1.get_Nom() == "Archer")
+    {
+        CArcher Player1;
+        p1 = Player1;
+    }
+    if(p1.get_Nom() == "Sorcier")
+    {
+        CSorcier Player1;
+        p1 = Player1;
+    }
+    if(p1.get_Nom() == "Guerrier")
+    {
+        CGuerrier Player1;
+        p1 = Player1;
+    }
+
+    //**********************************//
+    //**********************************//
+
+    if(p2.get_Nom() == "Mage")
+    {
+        CMage Player2;
+        p2 = Player2;
+    }
+    if(p2.get_Nom() == "Archer")
+    {
+        CArcher Player2;
+        p2 = Player2;
+    }
+    if(p2.get_Nom() == "Sorcier")
+    {
+        CSorcier Player2;
+        p2 = Player2;
+    }
+    if(p2.get_Nom() == "Guerrier")
+    {
+        CGuerrier Player2;
+        p2 = Player2;
+    }
 
 
-
-
-    game.LauchGame(&Player1, &Player2);
-    game.PlayTurn(&Player1, &Player2);
+    game.LauchGame(&p1, &p2);
+    game.PlayTurn(&p1, &p2);
 }
 
 
