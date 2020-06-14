@@ -15,7 +15,7 @@ CPersonnage::CPersonnage()
 {
     m_nom = "Personnage non défini";
     m_pdv = m_maxpdv = -1;
-    m_esquive = -1;
+    m_esquive = 50;
     m_vitesse = -1;
     m_atk = -1;
     m_def = -1;
@@ -31,7 +31,7 @@ CPersonnage::CPersonnage(string nom, int maxpdv, int esquive, int vitesse, int a
 {
     m_nom = nom;
     m_pdv = m_maxpdv = maxpdv;
-    m_esquive = esquive;
+    m_esquive = 50;
     m_vitesse = vitesse;
     m_atk = atk;
     m_def = def;

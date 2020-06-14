@@ -4,7 +4,7 @@ CArcher::CArcher()
 {
     m_nom = "Archer";
     m_pdv = m_maxpdv = 90;
-    m_esquive = -1;
+    m_esquive = 50;
     m_vitesse = -1;
     m_atk = 25;
     m_def = -1;
@@ -22,7 +22,7 @@ CArcher::CArcher(string nom, int maxpdv, int esquive, int vitesse, int atk, int 
 {
     m_nom = nom;
     m_pdv = m_maxpdv = maxpdv;
-    m_esquive = esquive;
+    m_esquive = 50;
     m_vitesse = vitesse;
     m_atk = atk;
     m_def = def;

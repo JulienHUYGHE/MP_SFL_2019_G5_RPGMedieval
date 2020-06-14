@@ -4,7 +4,7 @@ CSorcier::CSorcier()
 {
     m_nom = "Sorcier";
     m_pdv = m_maxpdv = 100;
-    m_esquive = -1;
+    m_esquive = 50;
     m_vitesse = -1;
     m_atk = 40;
     m_def = -1;
@@ -20,7 +20,7 @@ CSorcier::CSorcier(string nom, int maxpdv, int esquive, int vitesse, int atk, in
 {
     m_nom = nom;
     m_pdv = m_maxpdv = maxpdv;
-    m_esquive = esquive;
+    m_esquive = 50;
     m_vitesse = vitesse;
     m_atk = atk;
     m_def = def;

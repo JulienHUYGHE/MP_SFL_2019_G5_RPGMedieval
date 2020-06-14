@@ -4,7 +4,7 @@ CGuerrier::CGuerrier()
 {
     m_nom = "Guerrier";
     m_pdv = m_maxpdv = 200;
-    m_esquive = -1;
+    m_esquive = 50;
     m_vitesse = -1;
     m_atk = 75;
     m_def = -1;
@@ -20,7 +20,7 @@ CGuerrier::CGuerrier(string nom, int maxpdv, int esquive, int vitesse, int atk, 
 {
     m_nom = nom;
     m_pdv = m_maxpdv = maxpdv;
-    m_esquive = esquive;
+    m_esquive = 50;
     m_vitesse = vitesse;
     m_atk = atk;
     m_def = def;

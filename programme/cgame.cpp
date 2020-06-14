@@ -11,6 +11,7 @@
 #include "csorcier.h"
 
 
+
 using namespace std;
 
 
@@ -138,16 +139,28 @@ bool CGame::QuelJoueur(int nombreTour)
 bool CGame::Esquive(CPersonnage * Attaquant, CPersonnage * receveur)
 {
     int max, random_number;
-    max = 100;
+    max = 70;
 
     srand(time(0));
-    random_number = (rand () % max) +1;
-    int chanceEsquive = random_number;
 
-    if(chanceEsquive <= receveur->Get_Esquive())
-    {
-        return true;
+    if(Attaquant->get_Nom() == "Guerrier") {
+        random_number = (rand () % max-1) +1;
+        int chanceEsquive = random_number;
+        if(chanceEsquive>=receveur->Get_Esquive()) {
+            return true;
+        }
     }
+    else {
+        max=60;
+        random_number = (rand () % max-1) +1;
+        int chanceEsquive = random_number;
+        if(chanceEsquive >= receveur->Get_Esquive())
+        {
+            return true;
+        }
+    }
+
+
 
 }
 

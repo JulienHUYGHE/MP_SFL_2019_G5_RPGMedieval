@@ -6,7 +6,7 @@ CMage::CMage()
 {
     m_nom = "Mage";
     m_pdv = m_maxpdv = 100;
-    m_esquive = -1;
+    m_esquive = 50;
     m_vitesse = -1;
     m_atk = 50;
     m_def = -1;
@@ -24,7 +24,7 @@ CMage::CMage(string nom, int maxpdv, int esquive, int vitesse, int atk, int def,
 {
     m_nom = nom;
     m_pdv = m_maxpdv = maxpdv;
-    m_esquive = 20;
+    m_esquive = 50;
     m_vitesse = vitesse;
     m_atk = atk;
     m_def = def;
