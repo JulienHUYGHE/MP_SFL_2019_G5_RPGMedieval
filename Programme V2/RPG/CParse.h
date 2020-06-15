@@ -8,7 +8,7 @@
 
 #include "cpersonnage.h"
 #include "CArcher.h"
-#include "CMage.h"
+#include "cmage.h"
 #include "cguerrier.h"
 #include "CAssassin.h"
 

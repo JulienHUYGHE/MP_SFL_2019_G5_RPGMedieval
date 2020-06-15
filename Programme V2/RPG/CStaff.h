@@ -1,7 +1,7 @@
 #ifndef STAFF_H
 #define STAFF_H
 #include "CRanged.h"
-#include "CMage.h"
+#include "cmage.h"
 
 class CCharacter;
 
