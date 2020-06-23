@@ -46,9 +46,9 @@ void CGame::PlayTurn()
     while(!IsGameOver(personnage1, personnage2))
     {
 
-      if(nbtour%2==1)
+      if(nbtour%2==0)
       {
-        std::cout << personnage2.get_Nom() << "is playing (joueur 1)\n";
+        std::cout << personnage2.get_Nom() << "is playing (joueur 2)\n";
         std::cout <<"Degats de l'arme : "<<personnage2.Get_Weapon()->Get_Damage();
 
         std::cout << "\n\nAction 1 : Attaquer\n" << "Action 2 : Attaquer main nues\n" << "Action 3 : Lancer un sort(Uniquement pour les mages)\n" << "Action 4 : Passer son tour\n";
@@ -79,9 +79,9 @@ void CGame::PlayTurn()
             std::cout << "Vous avez passé votre tour";
         }
       }
-      else if(nbtour%2==0)
+      else if(nbtour%2==1)
       {
-        std::cout << personnage1.get_Nom() << " is playing (joueur 2)\n";
+        std::cout << personnage1.get_Nom() << " is playing (joueur 1)\n";
         std::cout <<"Degats de l'arme : "<<personnage1.Get_Weapon()->Get_Damage();
         std::cout << "\n\nAction 1 : Attaquer\n" << "Action 2 : Attaquer main nues\n" << "Action 3 : Lancer un sort(Uniquement pour les mages)\n" << "Action 4 : Passer son tour\n";
         cin >> Choix;
@@ -214,7 +214,7 @@ void CGame::ChoisirPersonnage()
       if(AllChar[i]->EstMage())
         std::cout << "Mage"<<"\t\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
       if(AllChar[i]->EstAssassin())
-        std::cout << "Assasin"<<"\t\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
+        std::cout << "Assassin"<<"\t\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
       if(AllChar[i]->EstGuerrier())
         std::cout << "Guerrier"<<"\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
       std::cout << std::endl;
