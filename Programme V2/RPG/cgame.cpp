@@ -26,35 +26,11 @@ CGame::~CGame()
 
 }
 
-
-/*void CGame::Sort(int joueur,CPersonnage * personnage1, CPersonnage * personnage2 )
-{
-    Cmage  mage1(personnage1);
-    Cmage  mage2(personnage2);
-
-
-        if(joueur == 1) {
-            if(mage1.sort(personnage2) == false) {
-                PlayTurn(personnage1,personnage2);
-            }
-        }
-        else {
-            if(joueur == 2) {
-                if(mage2.sort(personnage1,personnage2) == false) {
-                   PlayTurn(personnage1,personnage2);
-            }
-
-           }
-        }
-}
-*/
-
-
-
-
 void CGame::LauchGame()
 {
-    cout<<"Le combat va commencer"<<endl;
+    cout<<"*********************************\n";
+    cout<<"C'est l'heure du DUDUDUDUDEL !!!!\n";
+    cout<<"*********************************\n";
 
     cout << personnage1.get_Nom() << " va affronter " << personnage2.get_Nom() <<" dans ce combat \n\n\n"<<endl;
 }
@@ -72,19 +48,21 @@ void CGame::PlayTurn()
 
       if(nbtour%2==1)
       {
-        std::cout << personnage2.get_Nom() << "is playing\n";
-        std::cout << "Action 1 : Attaquer\n" << "Action 2 : Attaquer main nues\n" << "Action 3 : Lancer un sort(Uniquement pour les mages)\n" << "Action 4 : Passer son tour\n";
+        std::cout << personnage2.get_Nom() << "is playing (joueur 1)\n";
+        std::cout <<"Degats de l'arme : "<<personnage2.Get_Weapon()->Get_Damage();
+
+        std::cout << "\n\nAction 1 : Attaquer\n" << "Action 2 : Attaquer main nues\n" << "Action 3 : Lancer un sort(Uniquement pour les mages)\n" << "Action 4 : Passer son tour\n";
         cin >> Choix;
         std::cout <<"\n\n";
 
         switch (Choix) {
           case 1:
             personnage2.Set_Pdv(personnage2.Get_Pdv()-(personnage1.Get_Atk()+personnage1.Get_Weapon()->Get_Damage()));
-            std::cout << personnage1.get_Nom() << "a pris " <<personnage2.Get_Atk() << "degats!";
+            std::cout << personnage1.get_Nom() << " a pris " <<personnage2.Get_Atk() << "degats!";
             break;
           case 2:
             personnage2.Set_Pdv(personnage2.Get_Pdv()-personnage1.Get_Atk());
-            std::cout << personnage1.get_Nom() << "a pris " <<personnage2.Get_Atk()+personnage2.Get_Weapon()->Get_Damage() << "degats!";
+            std::cout << personnage1.get_Nom() << " a pris " <<personnage2.Get_Atk()+personnage2.Get_Weapon()->Get_Damage() << "degats!";
             break;
           case 3:
             if(personnage2.EstMage())
@@ -103,10 +81,11 @@ void CGame::PlayTurn()
       }
       else if(nbtour%2==0)
       {
-        std::cout << personnage1.get_Nom() << " is playing\n";
-        std::cout << "Action 1 : Attaquer\n" << "Action 2 : Attaquer main nues\n" << "Action 3 : Lancer un sort(Uniquement pour les mages)\n" << "Action 4 : Passer son tour\n";
+        std::cout << personnage1.get_Nom() << " is playing (joueur 2)\n";
+        std::cout <<"Degats de l'arme : "<<personnage1.Get_Weapon()->Get_Damage();
+        std::cout << "\n\nAction 1 : Attaquer\n" << "Action 2 : Attaquer main nues\n" << "Action 3 : Lancer un sort(Uniquement pour les mages)\n" << "Action 4 : Passer son tour\n";
         cin >> Choix;
-        std::cout <<"\n\n";
+        std::cout <<"\n";
         switch (Choix) {
           case 1:
             personnage1.Set_Pdv(personnage1.Get_Pdv()-(personnage2.Get_Atk()+personnage2.Get_Weapon()->Get_Damage()));
@@ -131,9 +110,10 @@ void CGame::PlayTurn()
             std::cout << "\nVous avez passé votre tour\n\n\n------------------------------------------\n";
         }
       }
+
       std::cout << personnage1.get_Nom() << " a " << personnage1.Get_Pdv() << " PV restants\n";
       std::cout << personnage2.get_Nom() << " a " << personnage2.Get_Pdv() << " PV restants\n";
-      std::cout <<"-----------------------------------------\n";
+      std::cout <<"\n-----------------------------------------\n\n";
       nbtour++;
     }
 
@@ -225,45 +205,55 @@ void CGame::ChoisirPersonnage()
     CParse parser;
     AllChar = parser.CharacterParse("characters.jdc");
     AllWeap = parser.WeaponParse("weapons.jdc");
-    std::cout << "Nom\t\tClasse\n\n";
+    std::cout << "Nom\t\tClasse\t\tDegats\tPdV\tDefense\tAgilite\n\n";
     for(int i=0; i< AllChar.size(); i++) //pres des persos
     {
       std::cout << i <<" - "<< AllChar[i]->get_Nom() << " \t";
       if(AllChar[i]->EstArcher())
-        std::cout << "Archer";
+        std::cout << "Archer"<<"\t\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
       if(AllChar[i]->EstMage())
-        std::cout << "Mage";
+        std::cout << "Mage"<<"\t\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
       if(AllChar[i]->EstAssassin())
-        std::cout << "Assasin";
+        std::cout << "Assasin"<<"\t\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
       if(AllChar[i]->EstGuerrier())
-        std::cout << "Guerrier";
+        std::cout << "Guerrier"<<"\t"<<AllChar[i]->Get_Atk()<<"\t"<<AllChar[i]->Get_Pdv()<<"\t"<<AllChar[i]->Get_Def()<<"\t"<<AllChar[i]->Get_Agi();
       std::cout << std::endl;
     }
-    std::cout << "\nChoix perso 1\n";
-    std::cin >> choix;
+    do
+    {
+        std::cout << "\nChoix pour le joueur 1\n";
+        std::cin >> choix;
+    }while(choix < 0 || choix > 5);
     personnage1 = new CPersonnage(AllChar[choix]);
-    std::cout << "Choix perso 2\n";
-    std::cin >> choix;
+    do
+    {
+        std::cout << "\nChoix pour le joueur 2\n";
+        std::cin >> choix;
+    }while(choix < 0 || choix > 5);
     personnage2 = new CPersonnage(AllChar[choix]);
 
     std::cout << "joueur 1 : "<<personnage1.get_Nom() << std::endl;
     std::cout << "joueur 2 : "<<personnage2.get_Nom() << std::endl;
 
-    std::cout << "\nNom\tType\n\n";
-
-
+    std::cout << "\nNom\t\tType\tdegats\n\n";
 
 
 
     for(int i=0; i<AllWeap.size(); i++)
     {
-      std::cout << i <<" - "<< AllWeap[i]->Get_Name() << "\t" << AllWeap[i]->Get_Type() << std::endl;
+      std::cout << i <<" - "<< AllWeap[i]->Get_Name() << "\t" << AllWeap[i]->Get_Type() << "\t" << AllWeap[i]->Get_Damage() <<std::endl;
     }
-    std::cout << "\nPlayer 1 choisis ton arme : \n";
-    std::cin >> choix;
+    do
+    {
+        std::cout << "\nJoueur 1 choisis ton arme : \n";
+        std::cin >> choix;
+    }while(choix < 0 || choix > 8);
     personnage1.Set_Weapon(new CWeapon(AllWeap[choix]));
-    std::cout << "Player 2 choisis ton arme : \n\n";
-    std::cin >> choix;
+    do
+    {
+        std::cout << "Player 2 choisis ton arme : \n\n";
+        std::cin >> choix;
+    }while(choix < 0 || choix > 8);
     personnage2.Set_Weapon(new CWeapon(AllWeap[choix]));
 
     system("CLS");
